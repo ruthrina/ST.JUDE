@@ -1198,6 +1198,7 @@
 </div>
 
 
+
 <!-- Team End -->
 
 <!-- Testimonial Start -->
@@ -1231,36 +1232,19 @@
 </div>
 
 
-<!-- Testimonial End -->
+<script>
+    document.querySelectorAll('.team-img').forEach(img => {
+  img.addEventListener('click', () => {
+    const content = img.nextElementSibling; // assuming team-content is next
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+    } else {
+      content.style.display = 'block';
+    }
+  });
+});
 
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const videoElement = document.getElementById("backgroundVideo");
-        const videoSource = document.getElementById("videoSource");
-
-        // List of videos to cycle through
-        const videos = [
-            "{% static 'video/p.mp4' %}",
-            "{% static 'video/kids2.mp4' %}",
-            "{% static 'video/kids1.mp4' %}"
-        ];
-
-        let currentVideoIndex = 0;
-
-        function switchVideo() {
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-
-            // Temporarily remove the video element to reload properly
-            videoElement.pause();
-            videoSource.src = videos[currentVideoIndex];
-            videoElement.load();
-            videoElement.play();
-        }
-
-        // Change video every 10 seconds
-        setInterval(switchVideo, 10000);
-    });
-</script> -->
+</script>
 
 
 

@@ -1,0 +1,510 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .fundraiser-intro {
+        background: #f8f9fa;
+        padding: 50px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+
+    .fundraiser-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .fundraiser-content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .fundraiser-content h2 {
+        font-size: 2rem;
+        color: #d9534f; /* Red tone for urgency and compassion */
+        margin-bottom: 15px;
+    }
+
+    .fundraiser-content h3 {
+        font-size: 1.5rem;
+        color: #0275d8; /* Blue for trust and reliability */
+        margin-top: 20px;
+    }
+
+    .fundraiser-content p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .fundraiser-images {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fundraiser-images img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+        .fundraiser-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .fundraiser-images {
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .fundraiser-images img {
+            max-width: 200px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .fundraiser-images {
+            flex-direction: column;
+        }
+
+        .fundraiser-images img {
+            max-width: 100%;
+        }
+    }
+
+    
+    .faq-section {
+        background-color: #f8f9fa;
+        padding: 60px 0;
+    }
+
+    .faq-section h2 {
+        font-size: 2rem;
+        color: #d9534f; /* Red tone for urgency and compassion */
+        margin-bottom: 30px;
+    }
+
+    .faq-section .accordion .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .faq-section .accordion .card-header {
+        background-color: #0275d8; /* Blue for trust */
+        color: white;
+    }
+
+    .faq-section .accordion .btn-link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .faq-section .accordion .collapse.show {
+        background-color: #f1f1f1;
+    }
+
+    .faq-section .accordion .card-body {
+        padding: 20px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+
+ 
+    .fundraiser-section {
+        padding: 50px 20px;
+        max-width: 900px;
+        margin: auto;
+        background: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .fundraiser-section h2 {
+        color: #007bff;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .fundraiser-section p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .benefit-list, .funds-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .benefit-item, .funds-item {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    
+    .contribution-section {
+        background: #e2f3e9; /* Soft green background for hope and growth */
+        padding: 40px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .contribution-content h2 {
+        font-size: 2.2rem;
+        color: #e83e8c; /* Pink tone for compassion */
+        margin-bottom: 15px;
+    }
+
+    .contribution-content h3 {
+        font-size: 1.5rem;
+        color: #f39c12; /* Warm yellow for hope and optimism */
+        margin-top: 15px;
+    }
+
+    .contribution-content p {
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.6;
+        margin-top: 10px;
+    }
+
+    .contribution-content strong {
+        color: #d9534f; /* Red for urgency */
+    }
+
+
+    .fundraising-campaigns {
+        padding: 60px 0;
+        background-color: #f8f9fa;
+    }
+
+    .fundraiser-card {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+
+    .fundraiser-card:hover {
+        transform: scale(1.05);
+    }
+
+    .fundraiser-card img {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .fundraiser-card .card-body {
+        text-align: center;
+    }
+
+    .fundraiser-card .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #d9534f; /* Red tone for urgency */
+    }
+
+    .fundraiser-card .card-text {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .fundraiser-card .btn {
+        width: 100%;
+        background-color: #0275d8;
+        color: white;
+        font-weight: bold;
+    }
+
+</style>
+
+
+
+<!-- Hero Section -->
+<div class="container-fluid hero-header" style="background: url('{% static 'img/5.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Fundraising</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Programs</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Fundraising</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section: Introduction to the Fundraiser -->
+<section class="fundraiser-intro">
+    <div class="fundraiser-container">
+        <!-- Left: Text Content -->
+        <div class="fundraiser-content">
+            <h2>Introduction to the Fundraiser</h2>
+            <p>
+                At <strong>St. Thadeous Charity</strong>, we believe that no one should suffer due to lack of resources. 
+                This fundraiser is not just about raising money—it’s about <strong>changing lives, restoring hope, 
+                and creating a brighter future</strong> for those in need.
+            </p>
+
+            <h3>Why Are We Fundraising?</h3>
+            <p>
+                In our communities, many <strong>children, families, and individuals</strong> struggle with 
+                <strong>poverty, lack of education, and limited access to healthcare</strong>. 
+                Without intervention, their dreams remain out of reach. 
+                This fundraiser aims to <strong>bridge the gap</strong> by providing them with <strong>food, education, 
+                medical assistance, and support</strong> to build a better future.
+            </p>
+        </div>
+
+        <!-- Right: Fundraiser Images -->
+        <div class="fundraiser-images">
+            <img src="{% static 'img/5.jpeg' %}" alt="Children receiving food">
+            
+            <img src="{% static 'img/5.jpeg' %}" alt="Students in class">
+        </div>
+    </div>
+</section>
+
+<!-- CSS Styles -->
+
+
+<!-- Section: Who Will Benefit & How Will the Funds Be Used -->
+<section class="fundraiser-section">
+    <h2>Who Will Benefit?</h2>
+    <p>Your donations will directly impact:</p>
+
+    <div class="benefit-list">
+        <div class="benefit-item">
+            ✅ <strong>Orphaned and vulnerable children</strong> who need school fees, supplies, and a safe learning environment.
+        </div>
+        <div class="benefit-item">
+            ✅ <strong>Struggling families</strong> who cannot afford basic needs like food, clothing, and shelter.
+        </div>
+        <div class="benefit-item">
+            ✅ <strong>Sick and elderly individuals</strong> in need of urgent medical care and support.
+        </div>
+        <div class="benefit-item">
+            ✅ <strong>Unemployed youth</strong> seeking vocational training to gain skills for self-sustainability.
+        </div>
+    </div>
+
+    <h2>How Will the Funds Be Used?</h2>
+    <p>Every shilling/dollar you give will be put to immediate and impactful use, ensuring transparency and accountability.</p>
+
+    <div class="funds-list">
+        <div class="funds-item">
+            📚 <strong>Education Support</strong> – Tuition fees, books, school supplies, and mentorship programs.
+        </div>
+        <div class="funds-item">
+            🥖 <strong>Food Relief</strong> – Nutritious meals for children and struggling families.
+        </div>
+        <div class="funds-item">
+            🏥 <strong>Medical Assistance</strong> – Urgent treatments, medications, and healthcare programs.
+        </div>
+        <div class="funds-item">
+            🛠 <strong>Skills & Empowerment Programs</strong> – Vocational training for unemployed youth and women.
+        </div>
+    </div>
+</section>
+
+
+<!-- Section: Your Contribution = A Changed Life -->
+<section class="contribution-section">
+    <div class="contribution-content">
+        <h2>💖 Your Contribution = A Changed Life! 💖</h2>
+        <p>
+            With your generosity, a child will stay in school, a sick person will receive medical attention, 
+            and a family will have food on their table.
+        </p>
+        <h3>🌟 Together, we can bring hope where it is needed most. 🌟</h3>
+        <p>
+            Will you join us in making a difference? <strong>Donate today and be the reason someone smiles tomorrow!</strong>
+        </p>
+    </div>
+</section>
+
+
+
+<!-- Section: Different Fundraising Campaigns -->
+<section class="fundraising-campaigns">
+    <div class="container">
+        <h2 class="text-center mb-4">🌍 Support a Cause That Matters 🌍</h2>
+        <p class="text-center">Choose a campaign and make an impact today.</p>
+
+        <div class="row">
+            <!-- Education Support Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card fundraiser-card">
+                    <img src="{% static 'img/education.png' %}" class="card-img-top" alt="Education Support">
+                    <div class="card-body">
+                        <h5 class="card-title">📚 Education Support</h5>
+                        <p class="card-text">
+                            💡 Many children cannot afford school fees, supplies, or a safe learning environment.<br>
+                            🎯 Goal: $10,000 for tuition, books, and mentorship.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>✅ $50 provides school supplies for one child.</li>
+                            <li>✅ $100 covers a term's tuition for a student.</li>
+                        </ul>
+                        <a href="{% url 'donate' %}" class="btn btn-primary">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Relief Program Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card fundraiser-card">
+                    <img src="{% static 'img/food-relief.jpg' %}" class="card-img-top" alt="Food Relief Program">
+                    <div class="card-body">
+                        <h5 class="card-title">🥖 Food Relief Program</h5>
+                        <p class="card-text">
+                            💡 Many families go without daily meals.<br>
+                            🎯 Goal: $8,000 to provide 10,000 nutritious meals.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>✅ $10 provides a family with meals for a week.</li>
+                            <li>✅ $50 feeds a child for a month.</li>
+                        </ul>
+                        <a href="{% url 'donate' %}" class="btn btn-primary">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Assistance Fund Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card fundraiser-card">
+                    <img src="{% static 'img/medical ass.jpg' %}" class="card-img-top" alt="Medical Assistance Fund">
+                    <div class="card-body">
+                        <h5 class="card-title">🏥 Medical Assistance Fund</h5>
+                        <p class="card-text">
+                            💡 Urgent medical care is out of reach for many.<br>
+                            🎯 Goal: $12,000 for treatments, medications, and surgeries.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>✅ $30 provides essential medication for a sick patient.</li>
+                            <li>✅ $100 covers hospital expenses for a struggling family.</li>
+                        </ul>
+                        <a href="{% url 'donate' %}" class="btn btn-primary">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Empowerment Program Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card fundraiser-card">
+                    <img src="{% static 'img/empower.webp' %}" class="card-img-top" alt="Skills & Empowerment">
+                    <div class="card-body">
+                        <h5 class="card-title">🛠 Skills & Empowerment</h5>
+                        <p class="card-text">
+                            💡 Helping unemployed youth and single mothers gain skills.<br>
+                            🎯 Goal: $15,000 for training programs and startup kits.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>✅ $20 buys training materials for a student.</li>
+                            <li>✅ $200 fully sponsors a youth for a vocational course.</li>
+                        </ul>
+                        <a href="{% url 'donate' %}" class="btn btn-primary">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+   
+
+
+<!-- Section: FAQ (Frequently Asked Questions) -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="text-center mb-4">❓ Frequently Asked Questions ❓</h2>
+
+        <div class="accordion" id="faqAccordion">
+            <!-- Question 1: How are donations used? -->
+            <div class="card">
+                <div class="card-header" id="faq1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How are donations used?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="faq1" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Your generous donations directly support our programs, including education, food relief, medical assistance, and skills empowerment. Each dollar is used to fund vital services and resources for the most vulnerable in our community.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Are donations tax-deductible? -->
+            <div class="card">
+                <div class="card-header" id="faq2">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Are donations tax-deductible?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="faq2" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Yes, all donations to St. Thadeous Charity are tax-deductible. We provide receipts for all donations made to ensure you receive the appropriate documentation for tax purposes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Can I donate anonymously? -->
+            <div class="card">
+                <div class="card-header" id="faq3">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Can I donate anonymously?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="faq3" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Yes, you can choose to donate anonymously. During the donation process, you will have the option to hide your name from the donor list.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

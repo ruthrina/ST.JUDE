@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .gifts-intro {
+        background: #f8f9fa;
+        padding: 40px 0;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .gifts-intro h2 {
+        font-size: 2.5rem;
+        color: #d9534f; /* Red tone for urgency and compassion */
+        margin-bottom: 20px;
+    }
+
+    .gifts-intro p {
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .gifts-difference {
+        background: #ffffff;
+        padding: 40px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .gifts-difference h3 {
+        font-size: 2rem;
+        color: #0275d8; /* Blue for trust and reliability */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .gifts-difference ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .gifts-difference li {
+        font-size: 1.1rem;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .gifts-difference li strong {
+        color: #d9534f;
+    }
+
+    .gifts-difference p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* General Styling */
+.gift {
+    background: #f8f9fa;
+    padding: 50px 20px;
+}
+
+.gift .contain {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Gift Sponsorship Section */
+.gift .gift-sponsor {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.gift .gift-sponsor h4 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.gift .gift-sponsor p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Sponsorship Form */
+.gift .sponsorship-form {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.gift .form-group {
+    margin-bottom: 15px;
+}
+
+.gift label {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.gift input,
+.gift select,
+.gift textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.gift input:focus,
+.gift select:focus,
+.gift textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.gift textarea {
+    resize: vertical;
+}
+
+/* Button Styling */
+.gift .btn-primary {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+}
+
+.gift .btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gift .contain {
+        width: 100%;
+    }
+
+    .gift .gift-sponsor {
+        padding: 20px;
+    }
+
+    .gift input,
+    .gift select,
+    .gift textarea {
+        font-size: 1rem;
+    }
+}
+
+
+    
+</style>
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/5.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Gifts</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Programs</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Gifts</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 1: Headline & Introduction -->
+<section class="gifts-intro">
+    <div class="container">
+        <h2>Your Gift Can Change Lives!</h2>
+        <p>
+            Your generous gift, whether financial or a physical donation, has the power to transform lives. 
+            With your contribution, children can stay in school, families can access life-saving medical care, 
+            and communities can receive the support they need to thrive. Your gift is more than just a donation; 
+            it is a symbol of hope, compassion, and a brighter future for those in need.
+        </p>
+    </div>
+</section>
+
+<!-- Section 2: How Gifts Make a Difference -->
+<section class="gifts-difference">
+    <div class="container">
+        <h3>How Gifts Make a Difference</h3>
+        <p>
+            Gifts provide direct support where it is most needed. When you donate, you’re helping in tangible ways:
+        </p>
+        <ul>
+            <li><strong>School Supplies & Education</strong>: Donating books, school uniforms, or stationery ensures that a child has the tools they need to succeed in school and achieve their dreams.</li>
+            <li><strong>Medical Assistance</strong>: Contributions of medicines, medical supplies, or financial aid for medical care can save lives and ensure that individuals can access the treatment they desperately need.</li>
+            <li><strong>Food & Nourishment</strong>: Food donations provide nourishment for families who are struggling to meet their basic needs, allowing children to grow healthy and parents to focus on improving their lives.</li>
+        </ul>
+        <p>
+            <strong>The Emotional Impact:</strong> By giving, you are not just providing material items; you’re offering hope. 
+            You’re becoming part of a community of change-makers who are working together to create a ripple effect of kindness and support. 
+            Your generosity brings smiles, restores health, and opens doors of opportunity.
+        </p>
+        <p>
+            Together, we are making a world of difference—one gift at a time.
+        </p>
+    </div>
+</section>
+
+
+
+<!-- Section 3: Gift Options -->
+<section class="gift-options" style="background-color: #f9f9f9; padding: 40px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h3 style="text-align: center; font-size: 32px; font-weight: bold; color: #2c3e50;">Gift Options</h3>
+
+        <!-- Monetary Donations Section -->
+        <div class="monetary-donations" style="margin-bottom: 40px;">
+            <h4 style="font-size: 28px; font-weight: bold; color: #2980b9;">Monetary Donations</h4>
+            <p style="font-size: 18px; color: #7f8c8d;">Your monetary donations make an immediate impact. Here are some ways your donation can help:</p>
+            <ul style="list-style: none; padding: 0; font-size: 18px; color: #34495e;">
+                <li><strong>$10</strong> – Provides meals for a family for one week.</li>
+                <li><strong>$50</strong> – Supplies school books and stationery for a child for one term.</li>
+                <li><strong>$100</strong> – Pays for medical treatment for a sick individual or a vaccination for a child.</li>
+            </ul>
+            <p style="font-size: 18px; font-weight: bold; color: #2980b9;">How You Can Help:</p>
+            <p style="font-size: 18px; color: #7f8c8d;">Choose the amount that resonates with you and make your donation to create a lasting impact.</p>
+        </div>
+
+        <!-- Physical Gifts Section -->
+        <div class="physical-gifts" style="margin-bottom: 40px;">
+            <h4 style="font-size: 28px; font-weight: bold; color: #2980b9;">Physical Gifts</h4>
+            <p style="font-size: 18px; color: #7f8c8d;">If you prefer donating physical items, here are some of the key things we need:</p>
+            <ul style="list-style: none; padding: 0; font-size: 18px; color: #34495e;">
+                <li><strong>School Supplies:</strong> Notebooks, pens, pencils, backpacks.</li>
+                <li><strong>Clothes or Shoes:</strong> Gently used or new clothing for children or families in need.</li>
+                <li><strong>Toys:</strong> Age-appropriate toys for orphaned children to bring joy and comfort.</li>
+                <li><strong>Medical Supplies:</strong> Bandages, over-the-counter medicines, basic first-aid kits.</li>
+                <li><strong>Non-Perishable Food:</strong> Rice, beans, canned goods, dried foods to help feed hungry families.</li>
+            </ul>
+            <p style="font-size: 18px; font-weight: bold; color: #2980b9;">How You Can Help:</p>
+            <p style="font-size: 18px; color: #7f8c8d;">If you have any of these items or want to purchase new items for donation, please contact us to arrange delivery or collection.</p>
+        </div>
+
+        <!-- Gift Catalog Section -->
+        <div class="gift-catalog">
+            <h4 style="font-size: 28px; font-weight: bold; color: #2980b9;">Gift Catalog</h4>
+            <p style="font-size: 18px; color: #7f8c8d;">Explore our catalog of items you can donate to make an impact. Each item directly helps those in need.</p>
+            <div class="catalog-gallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="catalog-item" style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="{% static 'img/schsupp.jpg' %}" alt="School Supplies" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <h5 style="font-size: 24px; font-weight: bold; color: #2980b9; margin-top: 15px;">School Supplies</h5>
+                    <p style="font-size: 16px; color: #7f8c8d;">Essential tools for students to help them stay in school.</p>
+                    <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Impact: Each set of supplies helps a child complete a school year.</p>
+                </div>
+                <div class="catalog-item" style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="{% static 'img/medsupplies.png' %}" alt="Medical Supplies" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <h5 style="font-size: 24px; font-weight: bold; color: #2980b9; margin-top: 15px;">Medical Supplies</h5>
+                    <p style="font-size: 16px; color: #7f8c8d;">Items to help with urgent care, like bandages, medicine, and first aid kits.</p>
+                    <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Impact: Medical supplies help save lives by providing timely treatments.</p>
+                </div>
+                <div class="catalog-item" style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="{% static 'img/toys.png' %}" alt="Toys for Children" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <h5 style="font-size: 24px; font-weight: bold; color: #2980b9; margin-top: 15px;">Toys for Children</h5>
+                    <p style="font-size: 16px; color: #7f8c8d;">Brighten a child's day with safe, educational toys.</p>
+                    <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Impact: A toy can bring joy and stability to a child's life, offering emotional support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Gift Options -->
+<section class="gift">
+    <div class="contain">
+               <!-- Gift Sponsorship Form -->
+        <div class="gift-sponsor">
+            <h4>Sponsor a Gift</h4>
+            <p>Make a direct impact by sponsoring a specific gift. Choose an item or cause to sponsor, and we’ll make sure your donation reaches the people who need it most.</p>
+
+            <form action="/submit-gift-sponsorship" method="POST" class="sponsorship-form">
+                <div class="form-group">
+                    <label for="giftType">Select the Gift You'd Like to Sponsor</label>
+                    <select id="giftType" name="giftType" required>
+                        <option value="">Select a gift</option>
+                        <option value="school-supplies">School Supplies for a Child</option>
+                        <option value="medical-treatment">Medical Treatment for a Patient</option>
+                        <option value="food-relief">Provide Food for a Family for a Month</option>
+                        <option value="toys">Sponsor Toys for Orphaned Children</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donorName">Your Name</label>
+                    <input type="text" id="donorName" name="donorName" placeholder="Your Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="donorEmail">Your Email</label>
+                    <input type="email" id="donorEmail" name="donorEmail" placeholder="Your Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="donationAmount">Donation Amount ($)</label>
+                    <input type="number" id="donationAmount" name="donationAmount" placeholder="Enter Amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Personal Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write a personal message for the people you are supporting (optional)"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sponsor Now</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}

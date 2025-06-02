@@ -1,0 +1,485 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Styling for the spiritual guidance section */
+    .spiritual-guidance {
+        background-color: #f4f7f9;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 40px 0;
+    }
+
+    /* Header styling */
+    .spiritual-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .spiritual-header h1 {
+        font-size: 2.5rem;
+        color: #3a6e76; /* Deep teal for calmness and trust */
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .spiritual-header p {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Introduction section styling */
+    .introduction {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 20px;
+        text-align: justify;
+    }
+
+    /* Add some responsiveness */
+    @media (max-width: 768px) {
+        .spiritual-header h1 {
+            font-size: 2rem;
+        }
+
+        .spiritual-header p,
+        .introduction p {
+            font-size: 1rem;
+        }
+    }
+
+    .faith-based-learning {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .faith-based-learning h2 {
+        font-size: 2.5rem;
+        color: #2e6a47;
+        margin-bottom: 20px;
+    }
+
+    .faith-based-learning p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .faith-learning-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .text-container {
+        flex: 1;
+        max-width: 50%;
+        padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container, .text-container {
+            max-width: 100%;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+    
+    .prayer-reflection {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .prayer-reflection h2 {
+        font-size: 2.5rem;
+        color: #2e6a47;
+        margin-bottom: 20px;
+    }
+
+    .prayer-reflection p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .prayer-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .text-container {
+        flex: 1;
+        max-width: 50%;
+        padding-right: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container, .text-container {
+            max-width: 100%;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+    
+
+    .spiritual-support {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .spiritual-support h2 {
+        font-size: 2.5rem;
+        color: #2e6a47;
+        margin-bottom: 20px;
+    }
+
+    .spiritual-support p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .support-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .text-container {
+        flex: 1;
+        max-width: 50%;
+        padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container, .text-container {
+            max-width: 100%;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+    
+    .group-activities {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .group-activities h2 {
+        font-size: 2.5rem;
+        color: #2e6a47;
+        margin-bottom: 20px;
+    }
+
+    .group-activities p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .activities-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .text-container {
+        flex: 1;
+        max-width: 50%;
+        padding-right: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container, .text-container {
+            max-width: 100%;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+    .parent-support {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .parent-support h2 {
+        font-size: 2.5rem;
+        color: #2e6a47;
+        margin-bottom: 20px;
+    }
+
+    .parent-support p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .parent-support-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .text-container {
+        flex: 1;
+        max-width: 50%;
+        padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container, .text-container {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+
+
+
+</style>
+
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/spirt.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">spiritual guidance</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">spiritual guidance</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="spiritual-guidance">
+    <header class="spiritual-header">
+        <h1>Guiding Souls, Strengthening Faith</h1>
+        <p>At ST.THADDAEUS CHILDREN FOUNDATION LIMITED, we believe that spiritual nourishment is just as vital as physical well-being. Through faith-based mentorship, prayer, and teaching, we help individuals strengthen their relationship with God and navigate life’s challenges with hope.</p>
+    </header>
+
+    <section class="introduction">
+        <p>Spiritual guidance plays a pivotal role in personal growth and community transformation. It provides hope, purpose, and moral support, helping individuals find clarity and strength through their faith. At St. Thadeous Charity, we are committed to helping individuals grow in faith and align their lives with God's purpose, bringing positive change to their lives and the community.</p>
+    </section>
+</section>
+
+<!-- Faith-Based Education and Teaching Section -->
+<section class="faith-based-learning">
+    <div class="container">
+        <!-- Flexbox Layout to Align Text and Image -->
+        <div class="content-wrapper">
+            <!-- Image on the Left -->
+            <div class="image-container">
+                <img src="{% static 'img/faith.jpg' %}" alt="Children learning faith" class="faith-learning-img">
+            </div>
+
+            <!-- Text Content on the Right -->
+            <div class="text-container">
+                <h2>Faith-Based Learning for Children</h2>
+                <p>Our faith-based education programs aim to teach children the core principles of Christianity. Through Bible stories, scripture reading, and interactive lessons, children learn about God’s love, kindness, forgiveness, and how to walk in His light. We make these lessons engaging and relatable for kids, helping them understand their faith in meaningful ways.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Prayer and Reflection for Children Section -->
+<section class="prayer-reflection">
+    <div class="container">
+        <!-- Flexbox Layout to Align Text and Image -->
+        <div class="content-wrapper">
+            <!-- Text Content on the Left -->
+            <div class="text-container">
+                <h2>Guiding Children Through Prayer</h2>
+                <p>Prayer is a powerful tool in a child’s spiritual journey. Our prayer programs help children learn to communicate with God through simple, heartfelt prayers. We teach them how to pray for others, express gratitude, seek guidance, and find comfort in prayer. Our goal is to encourage children to develop a habit of prayer, which will guide them through life’s challenges.</p>
+            </div>
+
+            <!-- Image on the Right -->
+            <div class="image-container">
+                <img src="{% static 'img/prayer.jpg' %}" alt="Children praying" class="prayer-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Styles -->
+
+
+<!-- Spiritual Support and Counseling for Children Section -->
+<section class="spiritual-support">
+    <div class="container">
+        <!-- Flexbox Layout to Align Image and Text -->
+        <div class="content-wrapper">
+            <!-- Image on the Left -->
+            <div class="image-container">
+                <img src="{% static 'img/spirtual.jpg' %}" alt="Spiritual counseling for children" class="support-img">
+            </div>
+
+            <!-- Text Content on the Right -->
+            <div class="text-container">
+                <h2>Spiritual Support for Children</h2>
+                <p>Our spiritual counselors offer personalized, child-friendly counseling sessions that address emotional struggles, doubts, or difficult life events. Whether a child is dealing with grief, stress, or confusion about their faith, our counselors provide a safe, compassionate space for them to express their feelings and receive guidance. We believe in meeting children where they are, with love, patience, and understanding.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Group Activities and Spiritual Workshops for Children Section -->
+<section class="group-activities">
+    <div class="container">
+        <!-- Flexbox Layout to Align Text and Image -->
+        <div class="content-wrapper">
+            <!-- Text Content on the Left -->
+            <div class="text-container">
+                <h2>Group Activities for Spiritual Growth</h2>
+                <p>Our group activities and spiritual workshops are designed to help children connect with their peers while growing in faith. Through youth group meetings, faith-based games, and team-building exercises, children learn about cooperation, kindness, and the importance of supporting each other in their spiritual journeys. These activities also offer opportunities for children to deepen their understanding of God’s love in a fun, engaging environment.</p>
+            </div>
+
+            <!-- Image on the Right -->
+            <div class="image-container">
+                <img src="{% static 'img/group.jpeg' %}" alt="Group activities for children" class="activities-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Support for Parents and Guardians Section -->
+<section class="parent-support">
+    <div class="container">
+        <!-- Flexbox Layout to Align Image and Text -->
+        <div class="content-wrapper">
+            <!-- Image on the Left -->
+            <div class="image-container">
+                <img src="{% static 'img/cate.avif' %}" alt="Support for parents and guardians" class="parent-support-img">
+            </div>
+
+            <!-- Text Content on the Right -->
+            <div class="text-container">
+                <h2>Helping Children in Catechism</h2>
+                <p>We are committed to supporting children in their catechism journey. Through resources, guidance, and workshops, we aim to help children grow in their faith and deepen their understanding of the teachings of the Church. Our goal is to create an environment where children can learn and live out their faith with confidence and joy.</p>
+            </div>
+  
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

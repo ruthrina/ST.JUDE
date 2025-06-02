@@ -1,0 +1,562 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Section Container */
+.section-container {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Blockquote */
+blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #555;
+    margin-top: 20px;
+    border-left: 4px solid #5cb85c;
+    padding-left: 20px;
+    background-color: #f1f1f1;
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+/* Volunteer Images Section */
+.volunteer-images-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.volunteer-image {
+    flex: 1;
+    max-width: 30%;
+}
+
+.volunteer-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Steps List */
+.steps {
+    list-style-type: none;
+    padding: 0;
+}
+
+.steps li {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.steps li strong {
+    color: #5cb85c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .volunteer-images-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .volunteer-image {
+        max-width: 80%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+
+    /* How to Volunteer */
+    .steps {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    .steps li {
+        background: #f8f9fa;
+        padding: 12px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    /* Form Styling */
+    .volunteer-form {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .volunteer-form label {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .volunteer-form input,
+    .volunteer-form select,
+    .volunteer-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .volunteer-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+
+    .volunteer-btn:hover {
+        background-color: #218838;
+    }
+    .sect-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+    }
+
+    .opportunities-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .opportunity-card {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        border-left: 6px solid #007bff; /* Highlight effect */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .opportunity-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .opportunity-card h3 {
+        color: #007bff;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .opportunity-card p {
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .opportunities-container {
+            grid-template-columns: 1fr; /* Single column on small screens */
+        }
+    }
+
+
+    
+    .benefits-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      
+    }
+
+    .benefit-card {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 32%; /* Increase the width of the cards */
+        text-align: center;
+        height: auto;
+       
+    }
+
+    .benefit-card h3 {
+        color: #007bff;
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+
+    .benefit-card p {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .testimonial-container {
+        display: flex;
+        flex-wrap: nowrap;  /* Prevent cards from wrapping */
+        gap: 20px;
+        margin-top: 20px;
+        overflow-x: auto;  /* Allow horizontal scroll if the content overflows */
+    }
+
+    .testimonial-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
+
+    .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .testimonial-card p {
+        font-size: 1rem;
+        font-style: italic;
+        color: #555;
+    }
+
+    .messages {
+    margin-bottom: 15px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.volunteer-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background: #0056b3;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+
+</style>
+
+<!-- Hero Section -->
+<div class="container-fluid hero-header" style="background: url('{% static 'img/vol.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Volunteering</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Volunteering</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 1: Introduction to Volunteering -->
+<section class="section-container">
+    <h2>Welcome to Our Volunteer Program</h2>
+    <p>
+        Volunteering is at the heart of our mission at <strong>St. Thadeous Charity</strong>. 
+        Whether you have time, skills, or passion to give, you can make a difference in the lives of many.
+    </p>
+
+    <h2>Why Volunteers Are Important</h2>
+    <p>
+        Volunteers are the heart of our mission. Your time, skills, and dedication help us provide essential support to children, families, and individuals in need. Whether it’s through educational programs, community outreach, or emergency relief efforts, your involvement plays a vital role in transforming lives.
+    </p>
+
+    <blockquote class="text-center mt-4">
+        <em>“The best way to find yourself is to lose yourself in the service of others.” – Mahatma Gandhi</em>
+    </blockquote>
+
+    <!-- Volunteer Images Section -->
+    <div class="volunteer-images-container">
+        <div class="volunteer-image">
+            <img src="{% static 'img/v.png' %}" alt="Volunteer 1" />
+        </div>
+        <div class="volunteer-image">
+            <img src="{% static 'img/vi.jpg' %}" alt="Volunteer 2" />
+        </div>
+        <div class="volunteer-image">
+            <img src="{% static 'img/vo.jpg' %}" alt="Volunteer 3" />
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: How to Volunteer -->
+<section class="section-container">
+    <h2>How to Volunteer</h2>
+    <p>Follow these simple steps to become part of our volunteer community:</p>
+
+    <ul class="steps">
+        <li><strong>Step 1:</strong> Fill out the application form below.</li>
+        <li><strong>Step 2:</strong> Our team will review your application and contact you.</li>
+        <li><strong>Step 3:</strong> Attend a short volunteer orientation.</li>
+        <li><strong>Step 4:</strong> Start making a difference in the community!</li>
+    </ul>
+</section>
+
+<!-- Section 3: Volunteer Application Form -->
+<section class="volunteer-section">
+    <h2 class="form-title">Volunteer Application Form</h2>
+    
+    <!-- Alert Messages -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="form-container">
+        <form method="post" class="volunteer-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_name">Full Name</label>
+                {{ form.name }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_email">Email Address</label>
+                {{ form.email }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_phone">Phone Number</label>
+                {{ form.phone }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_skills">Skills & Experience</label>
+                {{ form.skills }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_availability">Availability</label>
+                {{ form.availability }}
+            </div>
+            
+            <button type="submit" class="btn-submit">Apply Now</button>
+        </form>
+    </div>
+</section>
+
+
+
+<section class="sect-container">
+    <h2>Volunteer Opportunities</h2>
+    <p>Explore our open volunteer roles and find where you can make a difference!</p>
+
+    <div class="opportunities-container">
+        <div class="opportunity-card">
+            <h3>🎉 Event Planning</h3>
+            <p>Help organize charity events, fundraisers, and outreach programs.</p>
+        </div>
+
+        <div class="opportunity-card">
+            <h3>📚 Teaching</h3>
+            <p>Support children's education by teaching or tutoring in various subjects.</p>
+        </div>
+
+        <div class="opportunity-card">
+            <h3>📑 Administrative Work</h3>
+            <p>Assist with paperwork, emails, and general office tasks to keep our programs running.</p>
+        </div>
+
+        <div class="opportunity-card">
+            <h3>🤝 Community Outreach</h3>
+            <p>Engage with communities to spread awareness and provide support.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-container">
+    <h2>Volunteer Testimonials</h2>
+    <p>See what our volunteers have to say about their experience with St. Thadeous Charity.</p>
+
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <img src="{% static 'img/tes.png' %}" alt="Volunteer 1">
+            <p>"Volunteering at St. Thadeous has been life-changing! I love making a difference." - <strong>Sarah M.</strong></p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="{% static 'img/tes.png' %}" alt="Volunteer 2">
+            <p>"The joy of giving back is priceless. Highly recommend joining!" - <strong>James K.</strong></p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="{% static 'img/tes.png' %}" alt="Volunteer 3">
+            <p>"A beautiful experience that taught me the power of community." - <strong>Linda T.</strong></p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section-container">
+    <h2>Benefits of Volunteering</h2>
+    <p>Volunteering with St. Thadeous Charity offers a range of personal and professional benefits. Here are just a few reasons to get involved:</p>
+
+    <div class="benefits-container">
+        <div class="benefit-card">
+            <h3>🌱 Personal Growth</h3>
+            <p>Volunteering helps you develop new skills, build your resume, and connect with like-minded individuals. It's a great opportunity for personal growth and making a positive impact on the community.</p>
+        </div>
+
+        <div class="benefit-card">
+            <h3>🏆 Recognition</h3>
+            <p>We value the hard work and dedication of our volunteers. We offer recognition in the form of certificates, special appreciation events, and shout-outs during our programs.</p>
+        </div>
+
+        <div class="benefit-card">
+            <h3>🎁 Incentives</h3>
+            <p>As a volunteer, you can enjoy various perks such as free training, transportation stipends, and meals during volunteer shifts. We strive to make your volunteer experience rewarding and enjoyable.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let successMessage = document.querySelector(".alert-success");
+        if (successMessage) {
+            document.querySelector(".volunteer-form").reset();
+        }
+    });
+</script>
+    
+
+
+{% endblock %}

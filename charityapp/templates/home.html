@@ -1,0 +1,1268 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Background Video */
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Dark Overlay on Video */
+.get-involved::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust for better text visibility */
+    z-index: -1;
+}
+
+/* Get Involved Section */
+.get-involved {
+    position: relative;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Section Title (Now in Pure White) */
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff;  /* PURE WHITE */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Subtle glow for readability */
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    font-size: 1.3rem;
+    color: #f8f8f8; /* Slightly softer white */
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 50px;
+}
+
+/* Involve Cards */
+.involve-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Card Hover Effect */
+.involve-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Icon Box */
+.icon-bo {
+    font-size: 40px;  /* Smaller icons */
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    box-shadow: 0px 0px 15px rgba(255, 117, 140, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.involve-card:hover .icon-bo {
+    transform: scale(1.05); /* Slightly zoomed on hover */
+    box-shadow: 0px 0px 25px rgba(255, 117, 140, 0.8);
+}
+
+/* Glassmorphism Button */
+.btn-glass {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px); /* Lighter blur effect */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid white;
+    color: black;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    /* Stack the cards vertically */
+   
+
+    .col-md-6 {
+        max-width: 100%;
+        padding: 10px; /* Less padding */
+    }
+
+    .involve-card {
+        padding: 15px; /* Less padding on smaller screens */
+        width: 100%;
+    }
+
+    /* Adjust icon size */
+    .icon-bo {
+        font-size: 35px; /* Smaller icons for mobile */
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Adjust text size for headings */
+    .section-title {
+        font-size: 2rem; /* Smaller title */
+    }
+
+    .section-subtitle {
+        font-size: 1rem; /* Smaller subtitle */
+    }
+
+    /* Adjust text size for card titles */
+    .involve-card h4 {
+        font-size: 2rem;
+    }
+
+    /* Adjust text size for card descriptions */
+    .involve-card p {
+        font-size: 1.3rem;
+        color: black; /* Change paragraph text to black */
+    }
+
+    /* Adjust button size */
+    .btn-glass {
+        font-size: 1.5rem;
+        padding: 8px 15px;
+    }
+
+    /* Ensure video and fallback image fit well on small screens */
+    #background-video,
+    #fallback-image {
+        object-fit: cover;
+        filter: none;
+    }
+
+    /* Optional: Disable hover effects on small devices */
+    .involve-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Background Styling */
+.success-stories {
+    position: relative;
+    background: linear-gradient(to right, #222, #444);
+    color: white;
+    padding: 80px 0;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff; /* Pure White */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    font-size: 1.3rem;
+    color: #f8f8f8;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 50px;
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background-color: #f8f9fa; /* Light, professional background */
+    text-align: center;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #fffcfc;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f8f9fa;
+}
+
+.testimonial-card .rating i {
+    font-size: 18px;
+}
+
+
+.cause-body {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.2); /* Almost transparent */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(2px); /* Subtle blur */
+    color: black; /* Ensures the text is bright */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adds a shadow for contrast */
+    
+}
+
+.card-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.card-title {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+
+   
+    /* General Styles */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+
+/* Helping Hands Section */
+.helping-hands-container {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.helping-hands-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #004aad;
+    text-transform: uppercase;
+}
+
+.helping-hands-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 650px;
+    margin: auto;
+    font-style: italic;
+}
+
+/* Marquee Section */
+.helping-hands-marquee-container {
+    background: linear-gradient(to right, #004aad, #00aaff);
+    padding: 8px 0;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.helping-hands-marquee-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.helping-hands-marquee {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee-scroll 10s linear infinite;
+}
+
+.marquee-text {
+    display: inline-block;
+    animation: marquee-scroll 10s linear infinite;
+}
+
+.marquee-text:hover {
+    animation-play-state: paused;
+}
+
+/* Helping Hands Cards */
+.helping-hands-cards {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px; /* Extra space at the bottom */
+}
+
+/* Adds space around each card */
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+/* Card */
+.helping-hand-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Space between cards */
+    height: 100%; /* Ensures all cards are equal */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make all cards equal height */
+.helping-hand-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover Effects */
+.helping-hand-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.image-container {
+    width: 100%;
+    height: auto; /* Removes fixed height so images aren't cut */
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.helping-hand-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensures full image is visible */
+    border-radius: 10px;
+}
+
+/* Card Text */
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Donate Button */
+.helping-hand-donate-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #004aad, #00aaff);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0, 80, 180, 0.3);
+    margin-top: 15px;
+}
+
+.helping-hand-donate-btn:hover {
+    background: linear-gradient(135deg, #00358a, #0088cc);
+    transform: scale(1.05);
+}
+
+/* No Hands Message */
+.no-hands-text {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #777;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .helping-hands-title {
+        font-size: 2rem;
+    }
+    .helping-hands-subtitle {
+        font-size: 1.1rem;
+    }
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.event-item img {
+    height: 250px; /* Adjust this value as needed */
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    width: 100%; /* Makes sure it remains responsive */
+}
+
+/* Event Item Styling */
+.event-item {
+    transition: all 0.3s ease-in-out;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+}
+
+.event-item:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Date Box Styling */
+.date-box {
+    background: #f8f9fa; 
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    /* Event Item Layout */
+    .event-item {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .event-item h3 {
+        font-size: 1.5rem; /* Slightly smaller heading size for mobile */
+    }
+
+    .event-item p {
+        font-size: 1rem; /* Smaller paragraph size for better readability */
+    }
+
+    /* Event Item Image */
+    .event-item img {
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 15px; /* Space between image and text */
+    }
+
+    /* Date Box */
+    .date-box {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px; /* Space between date box and event description */
+    }
+
+    /* Ensure the buttons look good on mobile */
+    .event-item .btn {
+        width: 100%; /* Full width buttons */
+        margin-top: 10px; /* Space between buttons */
+    }
+
+    .col-3,
+    .col-9 {
+        width: 100%; /* Make the columns full width on mobile */
+    }
+
+    .event-item .col-3 {
+        text-align: center; /* Center date box on mobile */
+    }
+
+    /* Adjusting spacing for smaller screens */
+    .event-item .col-lg-4 {
+        margin-bottom: 15px; /* Add margin below the image for spacing */
+    }
+}
+
+/* Ensure the overall container has good padding */
+.container-fluid.event {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+    .team-item img {
+    height: 300px;  /* Set the height for the images */
+    object-fit: cover;  /* Ensures the image maintains aspect ratio and fills the area without distortion */
+    width: 100%;  /* Makes the width 100% to fill the available space */
+}
+
+
+
+
+
+/* For small devices (phones and smaller screens) */
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex: 0 0 50%; /* Two items per row on small screens */
+        max-width: 50%;
+        padding: 10px;
+    }
+
+    .team-item img {
+        height: 300px; /* Reduce height on small screens to make images less tall */
+    }
+
+    .team-content {
+        padding: 10px;
+    }
+
+    .team-item-title {
+        font-size: 1.25rem;
+    }
+
+    
+}
+
+/* For larger devices (Tablets and larger screens) */
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 33.33%; /* Three items per row for larger screens */
+        max-width: 33.33%;
+    }
+
+    .team-item img {
+        height: 300px; /* Ensure images maintain the same height */
+    }
+}
+
+.hero-header {
+    margin-bottom: 0 !important;
+}
+
+.about {
+    padding-top: 0 !important;
+}
+@media (max-width: 767.98px) {
+        .hero-header {
+            height: 67vh !important;
+        }
+        #fallbackImage {
+            height: 70vh !important;
+            object-fit: cover;
+            object-position: center top;
+        }
+        .hero-header-inner {
+            padding-top: 3vh;
+        }
+        .hero-header-inner p,
+        .hero-header-inner h1 {
+            font-size: 0.8rem !important;
+            text-align: left !important;
+        }
+        .hero-header-inner h1 {
+            line-height: 1.3;
+        }
+        .hero-header-inner a {
+            font-size: 0.9rem;
+        }
+    }
+
+</style>
+
+<!-- Hero Start -->
+
+
+<div class="container-fluid hero-header position-relative" style="min-height: 30vh; overflow: hidden;">
+    <!-- Background Video (Desktop only) -->
+    <video id="backgroundVideo" autoplay muted loop playsinline 
+        class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block"
+        style="object-fit: cover; z-index: -1;" preload="auto" onerror="showFallback()">
+        <source src="{% static 'video/kid3.mp4' %}" type="video/mp4">
+        <source src="{% static 'video/kid3.webm' %}" type="video/webm">
+    </video>
+
+    <!-- Fallback Image (Mobile only) -->
+    <img id="fallbackImage" src="{% static 'img/J1.jpeg' %}" alt="Fallback image" 
+        class="position-absolute top-0 start-0 w-100 h-100 d-block d-md-none"
+        style="object-fit: cover; object-position: center top; z-index: -1;">
+
+    <!-- Text Content -->
+    <div class="container position-relative py-4" style="z-index: 1;">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn text-dark">
+                    <p class="fs-6 fw-semibold">WELCOME TO ST. THADDAEUS CHILDREN FOUNDATION LIMITED</p>
+                    <h1 class="display-6 mb-3 fw-bold">Changing Lives, One Step at a Time</h1>
+                    <a href="{% url 'about' %}" class="btn btn-primary py-2 px-4">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showFallback() {
+        document.getElementById('backgroundVideo').style.display = 'none';
+        document.getElementById('fallbackImage').style.display = 'block';
+    }
+
+    // Check if video is paused or not loaded properly
+    document.addEventListener("DOMContentLoaded", function() {
+        var video = document.getElementById('backgroundVideo');
+        if (!video || video.paused) {
+            showFallback();
+        }
+    });
+</script>
+
+<!-- Hero End -->
+<!-- About Start -->
+
+<div class="container-fluid about py-5" style="background-color: #f0f7ff;">
+    <div class="container py-5">
+        <div class="row g-5 mb-5">
+            <div class="col-xl-6">
+                <div class="row g-4">
+                    <div class="col-6">
+                        <img src="{% static 'img/c3.jpg' %}" class="img-fluid h-100 wow zoomIn" data-wow-delay="0.1s" alt="Helping Hands" style="border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{% static 'img/c2.jpg' %}" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s" alt="Community Support" style="border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                        <img src="{% static 'img/6.jpeg' %}" class="img-fluid pt-3 wow zoomIn" data-wow-delay="0.1s" alt="Children Care" style="border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
+                <p class="fs-5 text-uppercase text-primary" style="font-family: 'Arial', sans-serif; letter-spacing: 1px;">About Our Charity</p>
+                <h1 class="display-5 pb-4 m-0" style="font-family: 'Roboto', sans-serif; font-weight: 700; color: #2c3e50;">Together, We Can Make a Difference</h1>
+                <p class="pb-4" style="font-size: 1.2rem; color: #34495e;">
+                    ST.THADDAEUS CHILDREN FOUNDATION LIMITED was founded in 2017 by Rev. Thaddaeus Kyekulidde Mubiru with the mission of supporting 
+                    underprivileged children by providing education, spiritual growth, and moral guidance.
+                </p>
+                <a href="{% url 'about' %}" class="btn btn-primary py-3 px-5" style="border-radius: 30px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Read More</a>
+
+                <div class="row g-4 mb-4 mt-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center icon-container">
+                            <span class="icon-box rounded-circle p-4" style="background: linear-gradient(45deg, #f39c12, #f1c40f); box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;">
+                                <i class="fas fa-eye fa-3x text-white" style="transition: transform 0.3s ease-in-out;"></i>
+                            </span>
+                            <div class="ms-4">
+                                <h5 style="font-weight: 700; color: #2c3e50;">Our Vision</h5>
+                                <p style="color: #34495e;">To nurture an educated, spiritually, and morally well-groomed generation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center icon-container">
+                            <span class="icon-box rounded-circle p-4" style="background: linear-gradient(45deg, #16a085, #1abc9c); box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;">
+                                <i class="fas fa-flag fa-3x text-white" style="transition: transform 0.3s ease-in-out;"></i>
+                            </span>
+                            <div class="ms-4">
+                                <h5 style="font-weight: 700; color: #2c3e50;">Our Mission</h5>
+                                <p style="color: #34495e;">To help needy children and orphans attain education while fostering spiritual and moral values.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <p class="mb-2 icon-text"><i class="fas fa-check-circle icon-check" style="color: #3498db;"></i> Providing School Fees & Resources</p>
+                        <p class="mb-0 icon-text"><i class="fas fa-check-circle icon-check" style="color: #3498db;"></i> Offering Spiritual & Moral Guidance</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-2 icon-text"><i class="fas fa-check-circle icon-check" style="color: #3498db;"></i> Establishing a Children's Home</p>
+                        <p class="mb-0 icon-text"><i class="fas fa-check-circle icon-check" style="color: #3498db;"></i> Organizing Mentorship Programs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center py-3 wow fadeIn" data-wow-delay="0.1s" style="background-color: #2980b9; border-radius: 25px;">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-2">
+                    <i class="fas fa-hands-helping fa-5x text-white"></i>
+                </div>
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="mb-0 text-white" style="font-size: 1.5rem; font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: uppercase;">Your Support Can Change Lives—Join Us Today</h1>
+                </div>
+                <div class="col-lg-3">
+                    <a href="{% url 'donate' %}" class="btn btn-light py-3 px-5" style="border-radius: 30px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About End -->
+
+
+<div class="container-fluid impact-section wow fadeInUp" data-wow-delay="0.2s" style="position: relative; padding: 80px 0;">
+    <!-- Background Image -->
+    <div style="background: url({% static 'img/c4.jpg' %}) no-repeat center center fixed; background-size: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;"></div>
+    <!-- Darker Overlay for Contrast -->
+    <div style="background: rgba(0, 0, 0, 0.3); position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <div class="container text-center" style="position: relative; z-index: 1;">
+        <h2 class="display-5 text-white mb-3 wow fadeInDown" data-wow-delay="0.3s" style="font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 2.8rem;">Our Impact in Numbers</h2>
+        <div class="row g-4">
+            <!-- Impact Box 1 -->
+            <div class="col-md-3">
+                <div class="impact-box wow zoomIn" data-wow-delay="0.4s" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border-radius: 25px; padding: 50px 30px; position: relative; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="impact-icon" style="font-size: 3.5rem; color: #f39c12;">
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                    <h2 class="impact-number" style="font-size: 4rem; font-weight: 700; color: #333;">
+                        <span class="count" data-target="10000">0</span>+
+                    </h2>
+                    <p class="impact-text" style="color: #555;">Meals Provided</p>
+                    <div class="impact-decoration" style="position: absolute; bottom: -10px; left: 0; width: 100%; height: 20px; background: #f39c12; border-radius: 50% 50% 0 0;"></div>
+                </div>
+            </div>
+
+            <!-- Impact Box 2 -->
+            <div class="col-md-3">
+                <div class="impact-box wow zoomIn" data-wow-delay="0.5s" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border-radius: 25px; padding: 50px 30px; position: relative; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="impact-icon" style="font-size: 3.5rem; color: #16a085;">
+                        <i class="fa fa-child"></i>
+                    </div>
+                    <h2 class="impact-number" style="font-size: 4rem; font-weight: 700; color: #333;">
+                        <span class="count" data-target="500">0</span>+
+                    </h2>
+                    <p class="impact-text" style="color: #555;">Children Sponsored</p>
+                    <div class="impact-decoration" style="position: absolute; bottom: -10px; left: 0; width: 100%; height: 20px; background: #16a085; border-radius: 50% 50% 0 0;"></div>
+                </div>
+            </div>
+
+            <!-- Impact Box 3 -->
+            <div class="col-md-3">
+                <div class="impact-box wow zoomIn" data-wow-delay="0.6s" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border-radius: 25px; padding: 50px 30px; position: relative; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="impact-icon" style="font-size: 3.5rem; color: #3498db;">
+                        <i class="fa fa-home"></i>
+                    </div>
+                    <h2 class="impact-number" style="font-size: 4rem; font-weight: 700; color: #333;">
+                        <span class="count" data-target="150">0</span>+
+                    </h2>
+                    <p class="impact-text" style="color: #555;">Homes visted</p>
+                    <div class="impact-decoration" style="position: absolute; bottom: -10px; left: 0; width: 100%; height: 20px; background: #3498db; border-radius: 50% 50% 0 0;"></div>
+                </div>
+            </div>
+
+            <!-- Impact Box 4 -->
+            <div class="col-md-3">
+                <div class="impact-box wow zoomIn" data-wow-delay="0.7s" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border-radius: 25px; padding: 50px 30px; position: relative; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="impact-icon" style="font-size: 3.5rem; color: #e74c3c;">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h2 class="impact-number" style="font-size: 4rem; font-weight: 700; color: #333;">
+                        <span class="count" data-target="100">0</span>+
+                    </h2>
+                    <p class="impact-text" style="color: #555;">Volunteers Engaged</p>
+                    <div class="impact-decoration" style="position: absolute; bottom: -10px; left: 0; width: 100%; height: 20px; background: #e74c3c; border-radius: 50% 50% 0 0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Helping Hands Section -->
+<div class="container helping-hands-container text-center">
+    <h2 class="helping-hands-title">Helping Hands</h2>
+    <p class="helping-hands-subtitle">
+        Join us in making a difference by supporting those in need. 
+        Every little effort counts towards a better future. 💙🙏
+    </p>
+</div>
+
+<!-- Marquee Section -->
+<div class="helping-hands-marquee-container">
+    <div class="helping-hands-marquee-wrapper">
+        <marquee class="helping-hands-marquee" behavior="scroll" direction="left" scrollamount="5">
+            <span class="marquee-text">
+                🌍 Together, we can extend love, hope, and support to those in need! 
+                One helping hand at a time. 💖✨
+            </span>
+        </marquee>
+    </div>
+</div>
+
+<!-- Helping Hands Cards -->
+<div class="container helping-hands-cards">
+    <div class="row justify-content-center g-4">
+        {% if hands %}
+            {% for hand in hands %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="helping-hand-card d-flex flex-column wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="image-container">
+                            <img src="{{ hand.image.url }}" alt="{{ hand.title }}" class="helping-hand-img">
+                        </div>
+                        <div class="card-body flex-grow-1 d-flex flex-column">
+                            <h3 class="card-title">{{ hand.title }}</h3>
+                            <p class="card-text flex-grow-1">{{ hand.description }}</p>
+                            <a href="{% url 'donate' %}" class="btn helping-hand-donate-btn mt-auto wow pulse" data-wow-iteration="infinite">Donate Now</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-hands-text wow fadeIn">No helping hands available at the moment.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+<section class="get-involved py-5 position-relative" style="min-height: 40vh; overflow: hidden;">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="background-video" class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block" 
+        style="object-fit: cover; z-index: -1;" preload="auto" onerror="showFallback()">
+        <source src="{% static 'video/s2.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Fallback Image (Always Show on Phones) -->
+    <img id="fallback-image" src="{% static 'img/J1.jpeg' %}" class="position-absolute top-0 start-0 w-100 h-100 d-block d-md-none" 
+        style="object-fit: cover; z-index: -1; filter: none;">
+
+    <div class="container text-center position-relative" style="z-index: 1;">
+        <h2 class="section-title wow fadeInDown" data-wow-duration="1s">How to Get Involved</h2>
+        <p class="section-subtitle wow fadeIn" data-wow-delay="0.2s">Join us in making a difference—choose how you want to help.</p>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 wow zoomIn" data-wow-delay="0.4s">
+                <div class="involve-card">
+                    <div class="icon-bo">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4>Donate</h4>
+                    <p>Your donation helps us provide food, education, and healthcare to those in need.</p>
+                    <a href="{% url 'donate' %}" class="btn-glass wow pulse" data-wow-delay="0.6s" data-wow-iteration="infinite">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 wow zoomIn" data-wow-delay="0.6s">
+                <div class="involve-card">
+                    <div class="icon-bo">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Volunteer</h4>
+                    <p>Give your time and skills to support our community projects and make an impact.</p>
+                    <a href="{% url 'volunteer' %}" class="btn-glass wow pulse" data-wow-delay="0.8s" data-wow-iteration="infinite">Join as Volunteer</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 wow zoomIn" data-wow-delay="0.8s">
+                <div class="involve-card">
+                    <div class="icon-bo">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Partner</h4>
+                    <p>Work with us to create sustainable programs and drive positive change together.</p>
+                    <a href="{% url 'partnership' %}" class="btn-glass wow pulse" data-wow-delay="1s" data-wow-iteration="infinite">Become a Partner</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 wow zoomIn" data-wow-delay="1s">
+                <div class="involve-card">
+                    <div class="icon-bo">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h4>Fundraise</h4>
+                    <p>Organize a fundraising campaign and help us reach more people in need.</p>
+                    <a href="{% url 'fundraise' %}" class="btn-glass wow pulse" data-wow-delay="1.2s" data-wow-iteration="infinite">Start Fundraising</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function showFallback() {
+        document.getElementById('background-video').style.display = 'none';
+        document.getElementById('fallback-image').style.display = 'block';
+    }
+
+    // Check if the video is playing; if not, show the fallback image
+    setTimeout(function() {
+        var video = document.getElementById('background-video');
+        if (!video.paused) return;
+        showFallback();
+    }, 3000);
+
+    // Optionally check for mobile devices, you could add more checks if necessary
+    if (window.innerWidth <= 767) {
+        document.getElementById('background-video').style.display = 'none';
+        document.getElementById('fallback-image').style.display = 'block';
+    }
+</script>
+
+
+
+
+
+<!-- Upcoming Charity Events Section -->
+<div class="container-fluid event py-5 bg-light">
+    <div class="container py-5">
+        <h1 class="display-4 text-center fw-bold mb-5 wow fadeIn" data-wow-delay="0.1s">
+            Upcoming <span class="text-primary">Charity Events</span>
+        </h1>
+
+        {% for event in events %}
+        <div class="row g-4 event-item align-items-center mt-4 wow fadeIn shadow-sm rounded p-4 bg-white" data-wow-delay="0.1s">
+            <div class="col-12 col-lg-4">
+                <div class="overflow-hidden rounded">
+                    <img src="{{ event.image.url }}" class="img-fluid w-100 rounded" alt="{{ event.title }}">
+                </div>
+            </div>
+            <div class="col-3 col-lg-2 text-center">
+                <div class="date-box border border-dark rounded py-3 px-2">
+                    <h5 class="fw-bold text-dark mb-1">{{ event.date|date:"d M" }}</h5>
+                    <p class="mb-0 text-muted">{{ event.date|date:"D" }} | {{ event.time|time:"g:i A" }}</p>
+                </div>
+            </div>
+            <div class="col-9 col-lg-6">
+                <div>
+                    <h3 class="fw-bold mb-3 text-dark">{{ event.title }}</h3>
+                    <p class="text-muted">{{ event.description }}</p>
+                    {% if event.join_url %}
+                    <a href="{{ event.join_url }}" class="btn btn-outline-primary px-4 py-2 rounded-pill">Join Now</a>
+                    {% endif %}
+                    <a href="{% url 'donate' %}" class="btn btn-primary px-4 py-2 rounded-pill mt-3">Donate Now</a> <!-- Added Donate Now button -->
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No upcoming charity events at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- Events End -->
+
+
+
+<!-- Blog Start -->
+{% load static %}
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest Insights from <span class="text-primary">Our Charity Blog</span></h1>
+        <div class="row g-4 justify-content-center">
+            
+            {% for blog in blogs %}
+            <div class="col-lg-6 col-xl-4">
+                <div class="blog-item wow fadeIn" data-wow-delay="0.{{ forloop.counter }}s">
+                    <div class="blog-img position-relative overflow-hidden">
+                        <img src="{{ blog.image.url }}" class="img-fluid w-100" alt="{{ blog.title }}">
+                        <div class="bg-primary d-inline px-3 py-2 text-center text-white position-absolute top-0 end-0">
+                            {{ blog.date|date:"d M Y" }}
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="blog-meta d-flex justify-content-between pb-2">
+                            <div class="">
+                                <small><i class="fas fa-user me-2 text-muted"></i><a href="" class="text-muted me-2">By {{ blog.author }}</a></small>
+                                <small><i class="fa fa-comment-alt me-2 text-muted"></i><a href="" class="text-muted me-2">{{ blog.comments_count }} Comments</a></small>
+                            </div>
+                            <div class="">
+                                <a href=""><i class="fas fa-bookmark text-muted"></i></a>
+                            </div>
+                        </div>
+                        <a href="{{ blog.link }}" class="d-inline-block h4 lh-sm mb-3">{{ blog.title }}</a>
+                        <p class="mb-4">{{ blog.content|truncatewords:20 }}</p>
+                        <a href="{{ blog.link }}" class="btn btn-primary px-3">More Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-muted">No blog posts available at the moment.</p>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Blog End -->
+
+<!-- Team Start -->
+<div class="container-fluid team py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <p class="fs-5 text-uppercase text-primary">Our Team</p>
+            <h1 class="display-3 fw-bold text-dark">Meet Our Organizers</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-4 col-xl-5">
+                <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+                    <img src="{% static 'img/1.jpeg' %}" class="img-fluid rounded-circle shadow-lg team-img-hover" alt="">
+                </div>
+            </div>
+            <div class="col-lg-8 col-xl-7">
+                <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="text-dark fw-bold team-item-title">Rev. Fr. Jude</h1>
+                    <h5 class="fw-normal fst-italic text-primary mb-4">Director</h5>
+                    <p class="mb-4 text-muted">
+                        Rev. Fr. Jude is dedicated to guiding the mission of St. Thadeous Charity with a heart full of compassion and commitment. His leadership ensures the success of our programs, empowering individuals and communities to live by faith and serve others. Through his direction, we strive to make a meaningful impact, grounded in love and service.
+                    </p>
+                    <p>0779699852/0700568437</p>
+                    <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
+                        <a class="btn btn-primary btn-lg-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-lg-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-primary btn-lg-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-primary btn-lg-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                            <img src="{% static 'img/na.jpeg' %}" class="img-fluid w-100 rounded-circle shadow-lg team-img-hover" alt="">
+                            <div class="team-content text-dark text-center py-3">
+                                <div class="team-content-inner">
+                                    <h5 class="mb-0 team-item-title">Rev Fr Andrew Nanseera</h5>
+                                    <p class="text-dark">Assistant Director </p>
+                                    <p>0788748317</p>
+                                    <!-- <p class="text-muted">Mary organizes impactful charity events and connects the community through various initiatives. Her passion for outreach and serving others is what drives our organization's mission forward.</p> -->
+                                    <div class="team-icon d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                            <img src="{% static 'img/rach.jpg' %}" class="img-fluid w-100 rounded-circle shadow-lg team-img-hover" alt="">
+                            <div class="team-content text-dark text-center py-3">
+                                <div class="team-content-inner">
+                                    <h5 class="mb-0 team-item-title">Nanyanzi Racheal </h5>
+                                    <p class="text-dark">Coordinator/Treasurer</p>
+                                    <p>0776466752 / 0701245855</p>
+                                    <!-- <p class="text-muted">David ensures that our outreach programs reach those in need. His commitment to creating positive change within our community is unwavering, and he works tirelessly to bring people together.</p> -->
+                                    <div class="team-icon d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                            <img src="{% static 'img/sec.jpg' %}" class="img-fluid w-100 rounded-circle shadow-lg team-img-hover" alt="">
+                            <div class="team-content text-dark text-center py-3">
+                                <div class="team-content-inner">
+                                    <h5 class="mb-0 team-item-title">Ntale Paul</h5>
+                                    <p class="text-dark">secretary</p>
+                                    <p>0778932255 / 0755438688</p>
+                                    <!-- <p class="text-muted">Sophia works closely with volunteers to ensure they are well-prepared and supported in their roles. Her nurturing approach ensures a smooth experience for everyone who contributes to our programs.</p> -->
+                                    <div class="team-icon d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                            <img src="{% static 'img/sa.jpeg' %}" class="img-fluid w-100 rounded-circle shadow-lg team-img-hover" alt="">
+                            <div class="team-content text-dark text-center py-3">
+                                <div class="team-content-inner">
+                                    <h5 class="mb-0 team-item-title">Mukasa Joseph Kasirye </h5>
+                                    <p class="text-dark">Transport officer</p>
+
+                                    <p>0780263323 / 0756409006</p>
+                                    
+                                    <div class="team-icon d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                            <img src="{% static 'img/salongo.jpeg' %}" class="img-fluid w-100 rounded-circle shadow-lg team-img-hover" alt="">
+                            <div class="team-content text-dark text-center py-3">
+                                <div class="team-content-inner">
+                                    <h5 class="mb-0 team-item-title">Ssalongo Joachim Kalema </h5>
+                                    <p class="text-dark">Chairman</p>
+                                    <p>0784348696</p>
+                                    
+                                    <div class="team-icon d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-primary btn-sm-square me-2 social-btn" href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square me-2 social-btn"><i class="fab fa-instagram"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm-square social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Team End -->
+
+<!-- Testimonial Start -->
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <p class="fs-5 text-uppercase text-primary">Testimonials</p>
+        <h1 class="display-4 fw-bold">What People Say About Us</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        {% for testimonial in testimonials %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card p-4 shadow-lg rounded-4 bg-white">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{{ testimonial.image.url }}" class="rounded-circle border" alt="{{ testimonial.name }}">
+                    <div class="ms-3">
+                        <h5 class="fw-bold mb-1">{{ testimonial.name }}</h5>
+                        <p class="text-muted small mb-0">{{ testimonial.profession }}</p>
+                    </div>
+                </div>
+                <p class="text-muted fst-italic">"{{ testimonial.content }}"</p>
+                <div class="rating mt-3">
+                    {% for i in testimonial.stars %}
+                        <i class="fas fa-star text-warning"></i>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- Testimonial End -->
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const videoElement = document.getElementById("backgroundVideo");
+        const videoSource = document.getElementById("videoSource");
+
+        // List of videos to cycle through
+        const videos = [
+            "{% static 'video/p.mp4' %}",
+            "{% static 'video/kids2.mp4' %}",
+            "{% static 'video/kids1.mp4' %}"
+        ];
+
+        let currentVideoIndex = 0;
+
+        function switchVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+
+            // Temporarily remove the video element to reload properly
+            videoElement.pause();
+            videoSource.src = videos[currentVideoIndex];
+            videoElement.load();
+            videoElement.play();
+        }
+
+        // Change video every 10 seconds
+        setInterval(switchVideo, 10000);
+    });
+</script> -->
+
+
+
+
+{% endblock %}

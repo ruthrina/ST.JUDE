@@ -1,0 +1,458 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .partnership-intro {
+        background: #f0f0f0;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+
+    .partnership-content {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .partnership-content h2 {
+        font-size: 2rem;
+        color: #d9534f; /* Red tone for urgency and compassion */
+        margin-bottom: 15px;
+    }
+
+    .partnership-content p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .partnership-image {
+        width: 48%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+    }
+
+    .partnership-benefits {
+        background: #e9ecef;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+
+    .benefits-content {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .benefits-content h2 {
+        font-size: 2rem;
+        color: #28a745; /* Green tone for positivity and growth */
+        margin-bottom: 15px;
+    }
+
+    .benefits-content h3 {
+        font-size: 1.5rem;
+        color: #0275d8; /* Blue for trust and reliability */
+        margin-top: 20px;
+    }
+
+    .benefits-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .benefits-list li {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .benefits-list li strong {
+        color: #d9534f; /* Red for emphasis */
+    }
+
+    .benefits-content p {
+        font-size: 1.1rem;
+        color: #333;
+        font-style: italic;
+    }
+
+    /* Partnership Section */
+.partnership-types {
+    background-color: #f4f7f6;
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+/* Content Wrapper */
+.types-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Paragraphs */
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Partnership Cards Container */
+.partnership-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Individual Card */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Title */
+.card h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+/* Card Description */
+.card p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .types-content {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+</style>
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/c1.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Paternship</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Paternship</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section: Introduction to Partnerships -->
+<section class="partnership-intro">
+    <div class="partnership-content">
+        <h2>Why Partner with Us?</h2>
+        <p>
+            At <strong>St. Thadeous Charity</strong>, we believe in the power of collaboration to create lasting change. Our mission is to provide education, healthcare, and support to vulnerable children, families, and communities. By partnering with us, you join a cause that transforms lives and brings hope where it's needed most.
+        </p>
+        <div class="image-container">
+            <img src="{% static 'img/c5.jpeg' %}" alt="Partner with us" class="partnership-image">
+            <img src="{% static 'img/c6.jpeg' %}" alt="Community impact" class="partnership-image">
+        </div>
+        <p>
+            As a partner, you will play an integral role in making a difference, whether through financial support, in-kind contributions, or by helping to spread awareness of our initiatives. Your generosity will directly impact the lives of those we serve, and together, we will make the world a better place.
+        </p>
+        <p>
+            We understand the importance of mutual benefit, and we are committed to ensuring that our partnerships are meaningful, impactful, and rewarding for both parties. With your partnership, we can amplify our collective efforts and create a lasting legacy of hope and empowerment for those in need.
+        </p>
+    </div>
+</section>
+
+<!-- Section: Benefits of Partnering -->
+<section class="partnership-benefits">
+    <div class="benefits-content">
+        <h2>Benefits of Partnering</h2>
+        <h3>What’s in it for the Partner?</h3>
+        <ul class="benefits-list">
+            <li><strong>Increased Visibility:</strong> Boost your brand recognition and reach a wider audience.</li>
+            <li><strong>Positive Community Impact:</strong> Make a meaningful difference through corporate social responsibility (CSR) initiatives.</li>
+            <li><strong>Networking Opportunities:</strong> Connect with like-minded organizations and influential community leaders.</li>
+            <li><strong>Influence and Visibility:</strong> Gain exposure through our charity’s campaigns, events, and initiatives.</li>
+        </ul>
+        <p>
+            <em>"As a partner, your brand will be associated with a noble cause and will receive recognition through our website, social media, and charity events. Together, we’ll reach more people and maximize the impact of your generosity."</em>
+        </p>
+    </div>
+</section>
+
+<!-- Section: Types of Partnerships -->
+<section class="partnership-types">
+    <div class="types-content">
+        <h2>Types of Partnerships</h2>
+        <p>There are many ways you can partner with us to make a difference in the community. Whether you’re looking to offer financial support, donate goods or services, collaborate on strategic projects, or help spread awareness, there is a partnership option for everyone!</p>
+
+        <div class="partnership-cards">
+            <div class="card">
+                <h3>💡 Financial Support</h3>
+                <p>Donating funds for specific programs, initiatives, or ongoing operational costs.</p>
+            </div>
+            <div class="card">
+                <h3>🌱 In-kind Contributions</h3>
+                <p>Offering goods or services (e.g., food donations, medical supplies, volunteer staff, etc.).</p>
+            </div>
+            <div class="card">
+                <h3>🤝 Strategic Partnerships</h3>
+                <p>Long-term collaborations where both parties work together for shared goals, such as joint fundraising events, shared projects, or initiatives.</p>
+            </div>
+            <div class="card">
+                <h3>📢 Awareness & Advocacy</h3>
+                <p>Helping spread the word, promote events, and advocate for your mission through their platform.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section: How to Partner -->
+<section class="how-to-partner">
+    <div class="partner-content">
+        <h2>How to Partner</h2>
+        <p>Ready to join us in making a difference? We’d love to discuss how we can collaborate to create lasting change. Get in touch with us today to explore the opportunities for partnership!</p>
+
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>If you’re interested in partnering with us or would like more information, feel free to reach out:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:info@stthadeouscharity.org">info@stthadeouscharity.org</a></li>
+                <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+            </ul>
+
+            <a href="#contact-form" class="btn btn-primary">Contact Us</a>
+        </div>
+
+        <div id="contact-form" class="contact-form">
+            <h3>Partnership Inquiry Form</h3>
+            <p>Fill out the form below and we will get back to you as soon as possible.</p>
+        
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        
+            <form method="post">
+                {% csrf_token %}
+        
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}">Your Name:</label>
+                    {{ form.name }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Your Email:</label>
+                    {{ form.email }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.organization.id_for_label }}">Organization (if applicable):</label>
+                    {{ form.organization }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.message.id_for_label }}">Your Message:</label>
+                    {{ form.message }}
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+        
+    </div>
+</section>
+
+<style>
+    .how-to-partner {
+        background: #f8f9fa;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+
+    .partner-content {
+        max-width: 900px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .partner-content h2 {
+        font-size: 2rem;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+
+    .partner-content p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .contact-info h3 {
+        font-size: 1.6rem;
+        color: #0275d8;
+        margin-bottom: 15px;
+    }
+
+    .contact-info ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .contact-info li {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .contact-info a {
+        display: inline-block;
+        background-color: #d9534f;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+
+    .contact-info a:hover {
+        background-color: #c9302c;
+    }
+
+    .contact-form {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h3 {
+        font-size: 1.6rem;
+        color: #28a745;
+        margin-bottom: 15px;
+    }
+
+    .contact-form p {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .contact-form label {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+        text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .contact-form button {
+        background-color: #d9534f;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+        background-color: #c9302c;
+    }
+</style>
+
+
+
+{% endblock %}

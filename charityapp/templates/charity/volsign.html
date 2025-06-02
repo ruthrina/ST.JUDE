@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Sign In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px; /* Set a max width for the form */
+        }
+        .form-title {
+            margin-bottom: 30px;
+            text-align: center;
+            color: #343a40; /* Dark text color */
+        }
+        .form-control {
+            border-radius: 0.25rem; /* Rounded corners */
+        }
+        .btn-custom {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-title">Volunteer Sign In</h1>
+        <form id="volunteerForm" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.first_name.label(class="form-label") }}
+                {{ form.first_name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label(class="form-label") }}
+                {{ form.last_name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.phone.label(class="form-label") }}
+                {{ form.phone(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.message.label(class="form-label") }}
+                {{ form.message(class="form-control", rows="3") }}
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Sign In</button>
+        </form>
+        {% if success %}
+            <script>
+                alert("Thank you for signing in! Your information has been submitted successfully.");
+            </script>
+        {% endif %}
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#volunteerForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                $.ajax({
+                    type: 'POST',
+                    url: '', // The URL to submit the form to (current URL)
+                    data: $(this).serialize(), // Serialize the form data
+                    success: function(response) {
+                        alert("Thank you for signing in! Your information has been submitted successfully.");
+                        $('#volunteerForm')[0].reset(); // Reset the form
+                    },
+                    error: function(xhr, status, error) {
+                        alert("There was an error submitting the form. Please try again.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

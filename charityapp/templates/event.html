@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+<style>
+    .event-item img {
+    height: 250px; /* Adjust this value as needed */
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    width: 100%; /* Makes sure it remains responsive */
+}
+
+</style>
+
+
+{% block content %}
+<div class="container-fluid hero-header" style="background: url('{% static 'img/5.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Upcoming Charity Events</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Programs</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Upcoming Charity Events</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="upcoming"> 
+
+</section>
+
+
+<!-- Upcoming Charity Events Section -->
+<div class="container-fluid event py-5 bg-light">
+    <div class="container py-5">
+        <h1 class="display-4 text-center fw-bold mb-5 wow fadeIn" data-wow-delay="0.1s">
+            Upcoming <span class="text-primary">Charity Events</span>
+        </h1>
+
+            <p>We have several impactful community outreach events coming up, and we need your support to make them a success! Your generous donations will help fund essential resources, provide necessary supplies, and ensure that we can make a real difference in the lives of those in need. Together, we can create a stronger, more vibrant community.</p>
+        
+
+        {% for event in events %}
+        <div class="row g-4 event-item align-items-center mt-4 wow fadeIn shadow-sm rounded p-4 bg-white" data-wow-delay="0.1s">
+            <div class="col-12 col-lg-4">
+                <div class="overflow-hidden rounded">
+                    <img src="{{ event.image.url }}" class="img-fluid w-100 rounded" alt="{{ event.title }}">
+                </div>
+            </div>
+            <div class="col-3 col-lg-2 text-center">
+                <div class="date-box border border-dark rounded py-3 px-2">
+                    <h5 class="fw-bold text-dark mb-1">{{ event.date|date:"d M" }}</h5>
+                    <p class="mb-0 text-muted">{{ event.date|date:"D" }} | {{ event.time|time:"g:i A" }}</p>
+                </div>
+            </div>
+            <div class="col-9 col-lg-6">
+                <div>
+                    <h3 class="fw-bold mb-3 text-dark">{{ event.title }}</h3>
+                    <p class="text-muted">{{ event.description }}</p>
+                    {% if event.join_url %}
+                    <a href="{{ event.join_url }}" class="btn btn-outline-primary px-4 py-2 rounded-pill">Join Now</a>
+                    {% endif %}
+                    <a href="{% url 'donate' %}" class="btn btn-primary px-4 py-2 rounded-pill mt-3">Donate Now</a> <!-- Added Donate Now button -->
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No upcoming charity events at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

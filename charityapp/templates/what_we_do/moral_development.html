@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}Gallery{% endblock %}
+
+{% block content %}
+
+<style>
+#introduction {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 60px 20px; /* Add more padding for better spacing */
+    text-align: center; /* Center-align the text */
+}
+
+#introduction .container {
+    max-width: 1200px; /* Maximum width of the content */
+    margin: 0 auto; /* Center the content */
+    font-family: Arial, sans-serif; /* Clean and modern font */
+}
+
+#introduction h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333; /* Dark color for the heading */
+}
+
+#introduction p {
+    font-size: 1.2rem; /* Adjusted font size for readability */
+    line-height: 1.8;
+    color: #555; /* Light gray for the text */
+    margin-bottom: 20px;
+    max-width: 900px; /* Limit the width of paragraphs */
+    margin-left: auto;
+    margin-right: auto; /* Center the paragraphs */
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between the images */
+    justify-content: center; /* Center-align the images */
+    margin-top: 30px; /* Space above the gallery */
+}
+
+.image-item {
+    width: 75%; /* Adjust size of images */
+    max-width: 350px; /* Ensure images do not get too large */
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add shadow effect */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #introduction {
+        padding: 40px 15px; /* Adjust padding on smaller screens */
+    }
+
+    #introduction h2 {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+    }
+
+    #introduction p {
+        font-size: 1.1rem; /* Reduce font size for paragraphs */
+    }
+
+    .image-gallery {
+        flex-direction: column; /* Stack images vertically */
+    }
+
+    .image-item {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 100%;
+    }
+}
+
+#moral-development-programs {
+    background-color: #ffffff; /* White background for clarity */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#moral-development-programs .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+#moral-development-programs h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+#moral-development-programs .programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+#moral-development-programs .program {
+    background-color: #f0f8ff; /* Light blue background for each program */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#moral-development-programs .program h3 {
+    font-size: 1.8rem;
+    color: #007acc; /* Blue color for headings */
+    margin-bottom: 15px;
+}
+
+#moral-development-programs .program p {
+    font-size: 1.2rem; /* Increased font size */
+    line-height: 1.8; /* Increased line height for better readability */
+    color: #555;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    #moral-development-programs h2 {
+        font-size: 2rem;
+    }
+    
+    #moral-development-programs .program h3 {
+        font-size: 1.5rem;
+    }
+    
+    #moral-development-programs .program p {
+        font-size: 1.1rem;
+    }
+}
+
+
+</style>
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/m.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">MORAL DEVELOPMENT</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">MORAL DEVELOPMENT</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="introduction">
+    <div class="container">
+        <h2>Introduction</h2>
+        <p>
+            Moral development plays a crucial role in shaping young minds into responsible, ethical individuals who will grow into leaders of tomorrow. By instilling values like honesty, kindness, and respect, we provide children with the tools they need to make good choices and contribute positively to their communities.
+        </p>
+        <p>
+            Our programs are rooted in faith-based teachings, community engagement, and mentorship, guiding children to develop a strong moral foundation. With the support of dedicated mentors, peers, and families, children learn to navigate challenges with integrity and compassion, building a brighter future for themselves and those around them.
+        </p>
+        
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <div class="image-item">
+                <img src="{% static 'img/spirtual.jpg' %}" alt="Image 1" class="img-fluid">
+            </div>
+            <div class="image-item">
+                <img src="{% static 'img/4.jpeg' %}" alt="Image 2" class="img-fluid">
+            </div>
+            <div class="image-item">
+                <img src="{% static 'img/prayer.jpg' %}" alt="Image 3" class="img-fluid">
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<section id="moral-development-programs">
+    <div class="container">
+        <h2>Our Moral Development Programs</h2>
+        <div class="programs">
+            <div class="program">
+                <h3>🛤 Guided Faith Formation</h3>
+                <p>Teaching moral principles through scripture, catechism, and faith-based discussions.</p>
+            </div>
+            <div class="program">
+                <h3>📚 Bible Study & Character Building</h3>
+                <p>Helping individuals apply biblical teachings to real-life situations.</p>
+            </div>
+            <div class="program">
+                <h3>🤝 Community Service & Outreach</h3>
+                <p>Encouraging acts of kindness through volunteering and charity initiatives.</p>
+            </div>
+            <div class="program">
+                <h3>🎭 Role-Playing & Storytelling</h3>
+                <p>Teaching moral lessons through engaging activities like dramas and real-life scenarios.</p>
+            </div>
+            <div class="program">
+                <h3>🗣 Mentorship & Counseling</h3>
+                <p>Providing guidance to navigate moral and personal challenges with support from experienced mentors.</p>
+            </div>
+            <div class="program">
+                <h3>🏫 School & Youth Programs</h3>
+                <p>Partnering with schools to instill values of honesty, respect, and responsibility in young minds.</p>
+            </div>
+            <div class="program">
+                <h3>🏡 Family Enrichment Sessions</h3>
+                <p>Helping families create a strong moral foundation through faith-based parenting and relationship-building.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

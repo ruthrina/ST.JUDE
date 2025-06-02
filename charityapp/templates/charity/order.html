@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="container-fluid hero-header" style="background: url('{% static 'img/5.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1 fw-bold ">Donate Now</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item text-white">Donate</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Donation Form -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Support Our Cause</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <form method="POST" action="{% url 'submit_order' %}" class="donation-form p-5 bg-white rounded shadow">
+                {% csrf_token %}
+                
+                <div class="form-group mb-4">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="John">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Doe">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email_address" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email_address" name="email_address" required placeholder="example@mail.com">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="phone_number" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" required placeholder="2567XXXXXXXX">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="amount" class="form-label">Amount (UGX)</label>
+                    <input type="number" class="form-control" id="amount" name="amount" required placeholder="50000">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required placeholder="Kampala">
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Donate Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

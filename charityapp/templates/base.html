@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ST. Thaddaeus Children Foundation - Helping Orphans & Needy Kids</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="ST. Thaddaeus Children Foundation helps orphans and needy children get education, spiritual, and moral support. Join us in making a difference!">
+    <meta name="keywords" content="children charity, orphan support, education for orphans, Uganda charity, donate for children, ST. Thaddaeus Children Foundation">
+    <meta name="author" content="ST. Thaddaeus Children Foundation">
+    <meta name="robots" content="index, follow">
+
+
+   
+    
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        .footer {
+            background: #343a40; /* Dark background */
+        }
+    
+        .footer h4 {
+            border-bottom: 2px solid #f8f9fa; /* Light border for headings */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+    
+        .nav-link {
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+    
+        .nav-link:hover {
+            color: #ffc107; /* Highlight color on hover */
+        }
+    
+        .btn-social {
+            transition: transform 0.3s ease; /* Smooth scale transition */
+        }
+    
+        .btn-social:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+    
+        .footer-menu a {
+            color: #f8f9fa; /* Light color for footer menu links */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+    
+        .footer-menu a:hover {
+            color: #ffc107; /* Highlight color on hover */
+        }
+    
+        .footer hr {
+            border-top: 1px solid #f8f9fa; /* Light color for horizontal rule */
+        }
+
+        @media (max-width: 767.98px) {
+                    .navbar-brand {
+                        flex-direction: column;
+                        align-items: flex-start !important;
+                    }
+                    .navbar-brand h6 {
+                        font-size: 0.9rem;
+                        line-height: 1.2;
+                    }
+                    .navbar-brand img {
+                        height: 35px;
+                        margin-bottom: 5px;
+                    }
+                    .navbar-nav .nav-link {
+                        font-size: 0.95rem;
+                        padding-left: 1rem;
+                    }
+                    .navbar-toggler {
+                        border: none;
+                    }
+                    .navbar-collapse {
+                        background: #fff;
+                        padding: 0.5rem 1rem;
+                        border-radius: 0.5rem;
+                    }
+                }
+    </style>
+</head>
+
+<body>
+
+    
+ 
+        <!-- Topbar start -->
+        <div class="container-fluid fixed-top">
+            <div class="container topbar d-none d-lg-block">
+                <div class="topbar-inner">
+                    <div class="row gx-0">
+                        <div class="col-lg-7 text-start">
+                            <div class="h-100 d-inline-flex align-items-center me-4">
+                                <span class="fa fa-phone-alt me-2 text-dark"></span>
+                                <a href="#" class="text-secondary"><span>077 345 6789</span></a>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center">
+                                <span class="far fa-envelope me-2 text-dark"></span>
+                                <a href="#" class="text-secondary"><span>info@example.com</span></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 text-end">
+                            <div class="h-100 d-inline-flex align-items-center">
+                                <span class="text-body">Follow Us:</span>
+                                <a class="text-dark px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="text-dark px-2" href=""><i class="fab fa-instagram"></i></a>
+                                <a href="{% url 'admin:login' %}?next=/admin/" class="nav-item nav-link" >Admin Login</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light py-3">
+                    <!-- Logo -->
+                    <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+                        <img src="{% static 'img/st1.png' %}" alt="Thaddaeus Charity Logo" style="height: 40px; margin-right: 10px;">
+                        <h6 class="mb-0">ST.THADDAEUS <span class="text-primary">CHARITY</span></h6>
+                    </a>
+            
+                    <!-- Toggle button for mobile -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <!-- Navbar links -->
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a href="{% url 'home' %}" class="nav-link active">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'about' %}" class="nav-link">About</a>
+                            </li>
+            
+                            <!-- What We Do Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    What We Do
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'educational_support' %}">Educational Support</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'spiritual_guidance' %}">Spiritual Guidance</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'health_wellness' %}">Health & Wellness</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'moral_development' %}">Moral Development</a></li>
+                                </ul>
+                            </li>
+            
+                            <!-- Get Involved Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    Get Involved
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'donate' %}">Donate</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'volunteer' %}">Volunteer</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'partnership' %}">Partnership</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'fundraise' %}">Fundraise</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'gifts' %}">Gifts</a></li>
+                                </ul>
+                            </li>
+            
+                            <li class="nav-item">
+                                <a href="{% url 'events' %}" class="nav-link">Events</a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'gallery' %}" class="nav-link">Gallery</a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+                                
+                            </li>
+
+            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+           
+            
+
+        </div>
+        <!-- Topbar End -->
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Content will be inserted here -->
+        {% endblock %}
+    </main>
+
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Quick Links Section -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <div class="navbar-nav flex-column">
+                        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                What We Do
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'educational_support' %}">Educational Support</a></li>
+                                <li><a class="dropdown-item" href="{% url 'spiritual_guidance' %}">Spiritual Guidance</a></li>
+                                <li><a class="dropdown-item" href="{% url 'health_wellness' %}">Health & Wellness</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moral_development' %}">Moral Development</a></li>
+                            </ul>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="getInvolvedDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Get Involved
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="getInvolvedDropdown">
+                                <li><a class="dropdown-item" href="{% url 'donate' %}">Donate</a></li>
+                                <li><a class="dropdown-item" href="{% url 'volunteer' %}">Volunteer</a></li>
+                                <li><a class="dropdown-item" href="{% url 'partnership' %}">Partnership</a></li>
+                                <li><a class="dropdown-item" href="{% url 'fundraise' %}">Fundraise</a></li>
+                                <li><a class="dropdown-item" href="{% url 'gifts' %}">Gifts</a></li>
+                            </ul>
+                        </div>
+                        <a href="{% url 'events' %}" class="nav-item nav-link">Events</a>
+                        <a href="{% url 'gallery' %}" class="nav-item nav-link">Gallery</a>
+                        <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+    
+                <!-- Contact Information Section -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Contact Us</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kampala, Uganda</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0776466752 / 0779699852</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>stthaddaeuschildrencharity@gmail.com</p>
+                    <div class="d-flex pt-3">
+                        <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+    
+                <!-- Logo and School Info Section -->
+                <div class="col-lg-6 col-md-12 text-center">
+                    <div class="">
+                        <img src="{% static 'img/st1.png' %}" alt="Kingstone High School Logo" class="mb-3" style="height: 120px; width: auto;">
+                    </div>
+                    <h4 class="text-white mt-3">ST.THADDAEUS CHILDREN FOUNDATION LIMITED</h4>
+                    <p class="text-white-50 mb-0">"Caring for needy, changing lives"</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <hr class="text-light">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; <a class="text-light fw-bold" href="#">ST.THADDAEUS CHILDREN FOUNDATION LIMITED</a>, All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a class="text-light" href="{% url 'home' %}">Home</a> |
+                        <a class="text-light" href="#">Cookies</a> |
+                        <a class="text-light" href="#">Help</a> |
+                        <a class="text-light" href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>

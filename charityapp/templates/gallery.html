@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}Gallery - Kingstone High School{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/5.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">ST.THADDEOUS GALLERY</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white"></a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Gallery</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">📸 Our Charity Gallery</h2>
+
+    <div class="row g-3">
+        {% for item in media_items %}
+        {% if item.image %}
+        <div class="col-md-4 col-sm-6">
+            <a href="{{ item.image.url }}" data-lightbox="gallery" data-title="{{ item.title }}">
+                <div class="gallery-item">
+                    <img src="{{ item.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ item.title }}">
+                    <div class="overlay">
+                        <h5 class="text-white text-center">{{ item.title }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <h2 class="text-center mt-5">🎥 Charity Videos</h2>
+    <div class="row g-3">
+        {% for item in media_items %}
+        {% if item.video %}
+        <div class="col-md-6">
+            <div class="video-container">
+                <video controls class="img-fluid rounded shadow-sm">
+                    <source src="{{ item.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h5 class="text-center mt-2">{{ item.title }}</h5>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<style>
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+    }
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+    .gallery-item:hover .overlay {
+        opacity: 1;
+    }
+</style>
+{% endblock %}

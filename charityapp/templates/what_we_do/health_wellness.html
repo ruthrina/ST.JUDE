@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* General styling for the health wellness introduction section */
+.health-wellness-introduction {
+    background-color: #f4f9f9; /* Light, soothing background color */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.health-wellness-introduction header {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.health-wellness-introduction h1 {
+    font-size: 36px;
+    color: #2c3e50; /* Dark, professional color */
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.health-wellness-introduction p {
+    font-size: 18px;
+    color: #34495e; /* Slightly lighter text for better readability */
+    line-height: 1.6;
+    font-family: 'Georgia', serif;
+    margin-bottom: 30px;
+    text-align: justify; /* Ensure the paragraph text stretches across the page for better readability */
+}
+
+/* Adding a soft border and shadow for a more elegant look */
+.health-wellness-introduction header {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.health-wellness-programs {
+    padding: 2rem;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.health-wellness-programs header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.health-wellness-programs header h2 {
+    font-size: 2.5rem;
+    color: #007BFF;
+    margin-bottom: 0.5rem;
+}
+
+.health-wellness-programs header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.program-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.program-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 320px;
+}
+
+.program-card img.program-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.program-card h3 {
+    font-size: 1.5rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+}
+
+.program-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .health-wellness-programs header h2 {
+        font-size: 2rem;
+    }
+
+    .program-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .program-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Wellness Tips and Resources Section */
+.wellness-tips {
+    padding: 50px 20px;
+    background-color: #f9fafb;
+    text-align: center;
+}
+
+.wellness-tips h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.wellness-tips p {
+    font-size: 18px;
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.wellness-resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wellness-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.wellness-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.wellness-card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wellness-card p {
+    font-size: 16px;
+    color: #34495e;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.wellness-card a {
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.wellness-card a:hover {
+    color: #2980b9;
+}
+
+/* Get Involved Section */
+.get-involved {
+    padding: 50px 20px;
+    background-color: #f9fafb;
+    text-align: center;
+}
+
+.get-involved h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.get-involved p {
+    font-size: 18px;
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.volunteer-opportunities {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.volunteer-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.volunteer-card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.volunteer-card p {
+    font-size: 16px;
+    color: #34495e;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.volunteer-card a {
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.volunteer-card a:hover {
+    color: #2980b9;
+}
+
+
+
+</style>
+
+<div class="container-fluid hero-header" style="background: url('{% static 'img/hea.jpeg' %}') center/cover no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1  fw-bold">Health wellness</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-warning" aria-current="page">Health wellness</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="health-wellness-introduction">
+    <header>
+        <h1>Promoting Health, Empowering Lives</h1>
+        <p>At ST.THADDAEUS CHILDREN FOUNDATION LIMITED, we believe that good health is the foundation for a fulfilling life. Our approach emphasizes the connection between physical, mental, and spiritual well-being. By providing resources, education, and support, we help individuals lead healthier, more balanced lives. Through our holistic health initiatives, we strive to promote physical wellness, mental peace, and spiritual growth, enabling individuals to live their lives to the fullest and contribute positively to their communities.</p>
+    </header>
+</section>
+
+
+<section class="health-wellness-programs">
+    <header>
+        <h2>Our Health and Wellness Programs</h2>
+        <p>We offer a range of programs designed to promote physical health, mental well-being, and community outreach. Each program is tailored to meet the needs of individuals and families in our community. Here are the programs we offer:</p>
+    </header>
+
+    <div class="program-cards">
+        <div class="program-card">
+            <img src="{% static 'img/med.jpg' %}" alt="Medical Assistance" class="program-image">
+            <h3>Medical Assistance & Health Screenings</h3>
+            <p>Offering medical check-ups, basic healthcare services, and screenings to underserved communities. We aim to improve access to essential healthcare services for those in need.</p>
+        </div>
+
+        <div class="program-card">
+            <img src="{% static 'img/ment.webp' %}" alt="Mental Health Support" class="program-image">
+            <h3>Mental Health Support</h3>
+            <p>Providing counseling, workshops, and resources for individuals dealing with mental health issues such as anxiety, depression, and stress. Our program seeks to promote mental well-being and resilience.</p>
+        </div>
+
+        <div class="program-card">
+            <img src="{% static 'img/nu.jpg' %}" alt="Nutrition & Healthy Eating" class="program-image">
+            <h3>Nutrition & Healthy Eating</h3>
+            <p>Educating and providing resources on maintaining a healthy diet. We offer food assistance for families in need and guide healthier eating choices for a better life.</p>
+        </div>
+
+        <div class="program-card">
+            <img src="{% static 'img/exercise.jpeg' %}" alt="Fitness & Exercise" class="program-image">
+            <h3>Fitness & Exercise</h3>
+            <p>Organizing fitness classes, wellness challenges, and exercise groups to encourage physical activity. Our goal is to improve overall health through active living.</p>
+        </div>
+
+        <div class="program-card">
+            <img src="{% static 'img/emp.jpg' %}" alt="Health Education & Awareness" class="program-image">
+            <h3>Health Education & Awareness</h3>
+            <p>Offering classes, workshops, and outreach programs to raise awareness about various health issues. We provide preventive care tips to help individuals take charge of their health.</p>
+        </div>
+    </div>
+</section>
+
+<section class="wellness-tips">
+    <header>
+        <h2>Wellness Tips and Resources</h2>
+        <p>Explore helpful tips and downloadable resources that will guide you toward better health and wellness. Whether you're looking to adopt healthier living habits, manage stress, or find local health services, we've got you covered!</p>
+    </header>
+    
+    <div class="wellness-resources">
+        <!-- Tip Card 1: Healthy Living -->
+        <div class="wellness-card">
+            <h3>Healthy Living</h3>
+            <p>Learn the basics of healthy living, including tips on balanced diets, staying active, and maintaining a positive outlook on life.</p>
+        </div>
+
+        <!-- Tip Card 2: Stress Management -->
+        <div class="wellness-card">
+            <h3>Managing Stress</h3>
+            <p>Discover simple techniques to reduce stress, from mindfulness practices to deep breathing exercises that can improve mental well-being.</p>
+        </div>
+
+        <!-- Tip Card 3: Self-Care Practices -->
+        <div class="wellness-card">
+            <h3>Self-Care Practices</h3>
+            <p>Understand the importance of self-care in maintaining emotional and mental health, and find suggestions for relaxing activities and routines.</p>
+        </div>
+
+        <!-- Tip Card 4: Local Health Services -->
+        <div class="wellness-card">
+            <h3>Local Health Services</h3>
+            <p>Access information about local health clinics, mental health resources, and community support systems available to assist individuals in need.</p>
+        </div>
+
+        <!-- Downloadable Resource Link -->
+        <div class="wellness-card">
+            <h3>Downloadable Health Guides</h3>
+            <p>Download our free health guides, offering advice on nutrition, fitness, and mental health to help you live a healthier life. <a href="/path-to-guides" target="_blank">Download Now</a></p>
+        </div>
+    </div>
+</section>
+
+<section class="get-involved">
+    <header>
+        <h2>Get Involved: Volunteer Opportunities</h2>
+        <p>Join us in making a difference! Volunteering in our health and wellness programs provides an opportunity to help individuals lead healthier lives. Here's how you can contribute:</p>
+    </header>
+
+    <div class="volunteer-opportunities">
+        <!-- Opportunity 1: Health Screenings -->
+        <div class="volunteer-card">
+            <h3>Help with Health Screenings</h3>
+            <p>Assist with organizing and conducting medical check-ups and health screenings to ensure community members have access to basic healthcare services.</p>
+        </div>
+
+        <!-- Opportunity 2: Support Fitness Classes -->
+        <div class="volunteer-card">
+            <h3>Support Fitness Classes</h3>
+            <p>Volunteer as a fitness instructor or assistant, helping to facilitate exercise classes that encourage physical activity and well-being within the community.</p>
+        </div>
+
+        <!-- Opportunity 3: Organize Wellness Workshops -->
+        <div class="volunteer-card">
+            <h3>Organize Wellness Workshops</h3>
+            <p>Help organize workshops on nutrition, mental health, and stress management, empowering individuals with the knowledge to take charge of their health.</p>
+        </div>
+
+        <!-- Volunteer Contact Form -->
+        <div class="volunteer-card">
+            <h3>Sign Up to Volunteer</h3>
+            <p>If you're passionate about health and wellness and want to make an impact, we would love to have you as a volunteer! <a href="{% url 'volunteer' %}" target="_blank">Sign up here</a> to get started.</p>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
